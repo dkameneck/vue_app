@@ -21,26 +21,40 @@ export default {
     }
   },
   methods: {
-    // TODO: srediti grafove (line i area)
     createGraph () {
       var ctx = this.$refs.graph
+      var datasets = []
+      if (this.type === 'area') {
+        datasets = [{
+          label: 'Number',
+          data: this.gData,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)'
+          ],
+          borderWidth: 1,
+          fill: true
+        }]
+      } else {
+        datasets = [{
+          label: 'Number',
+          data: this.gData,
+          borderColor: [
+            'rgba(255,99,132,1)'
+          ],
+          fill: false
+        }]
+      }
       this.myChart = new Chart(ctx, {
-        type: this.type,
+        type: 'line',
         data: {
-          labels: Object.keys(this.gData), // vrijeme / broj dohvata
-          datasets: [{
-            label: 'Number',
-            data: this.gData, // vrijednost dohvata
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)'
-            ],
-            borderColor: [
-              'rgba(255,99,132,1)'
-            ],
-            borderWidth: 1
-          }]
+          labels: Object.keys(this.gData),
+          datasets
         },
         options: {
+          events: ['click'],
           scales: {
             yAxes: [{
               ticks: {
