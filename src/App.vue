@@ -4,7 +4,7 @@
     <div>
       <span><router-link to="/">Home</router-link></span>
       <span><router-link to="/graphs">Graphs</router-link></span> <!-- <i v-if == aktivna ruta> -->
-      <span>Currency Items</span>
+      <span><router-link to="/currencies">Currencies</router-link></span>
       <span>Vuex</span>
     </div>
     <router-view></router-view>
