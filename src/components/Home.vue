@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     btnC () {
-      setTimeout(this.prtin, 1500)
+      setTimeout(this.prtin, 100)
     },
     prtin () {
       this.stat = !this.stat

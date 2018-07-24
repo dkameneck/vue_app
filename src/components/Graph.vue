@@ -7,7 +7,7 @@
 import Chart from 'chart.js'
 export default {
   props: {
-    gData: Array,
+    gData: Object,
     type: String
   },
   data () {
@@ -16,43 +16,16 @@ export default {
     }
   },
   watch: {
-    'gData': function () {
+    'gData.labels': function () {
       this.createGraph()
     }
   },
   methods: {
     createGraph () {
       var ctx = this.$refs.graph
-      var datasets = []
-      if (this.type === 'area') {
-        datasets = [{
-          label: 'Number',
-          data: this.gData,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)'
-          ],
-          borderWidth: 1,
-          fill: true
-        }]
-      } else {
-        datasets = [{
-          label: 'Number',
-          data: this.gData,
-          borderColor: [
-            'rgba(255,99,132,1)'
-          ],
-          fill: false
-        }]
-      }
       this.myChart = new Chart(ctx, {
         type: 'line',
-        data: {
-          labels: Object.keys(this.gData),
-          datasets
-        },
+        data: this.gData,
         options: {
           events: ['click'],
           scales: {
@@ -65,6 +38,10 @@ export default {
         }
       })
     }
+  },
+  mounted () {
+    // console.log('Mounted Graph')
+    this.createGraph()
   }
 }
 </script>
