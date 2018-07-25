@@ -1,15 +1,12 @@
 <template>
 <div>
-  <p>{{ txt }}</p>
   <button @click="dev"><span v-if="fl">STOP</span><span v-else>START</span></button>
-  <div style="max-width: 50%">
-    <span>Interval(ms): </span><input v-model="int1" />
-    line
-    <graph :g-data.sync="data1" />
-    <span>Interval(ms): </span><input v-model="int2" />
-    area
-    <graph :g-data.sync="data2" />
-  </div>
+  <span>Interval(ms): </span><input v-model="int1" />
+  line
+  <graph :g-data.sync="data1" />
+  <span>Interval(ms): </span><input v-model="int2" />
+  area
+  <graph :g-data.sync="data2" />
 </div>
 </template>
 <script>
@@ -19,7 +16,6 @@ export default {
   components: { Graph },
   data () {
     return {
-      txt: 'Graphs',
       fl: false,
       int1: 2500,
       int2: 5000,

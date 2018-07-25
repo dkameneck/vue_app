@@ -1,5 +1,6 @@
 <template>
 <div>
+<!-- prije izvlacenja u komponentu
   <div style="margin-left: 100px">
   <table>
     <thead>
@@ -23,22 +24,25 @@
       </tr>
     </tbody>
   </table>
-  </div>
+  </div> -->
+  <template v-if="finished">
+    <Table :lista="lista" @editRow="test"/>
+  </template>
 </div>
 </template>
 <script>
 import moment from 'moment'
+import Table from './Table'
 export default {
+  components: { Table },
   data () {
     return {
       lista: {},
-      showModal: false
+      finished: false
     }
   },
   methods: {
     test (id) {
-      console.log('klik')
-      this.showModal = !this.showModal
       this.$router.push('/currency/' + id)
     }
   },
@@ -85,7 +89,8 @@ export default {
           }
         }
       })
-      this.$forceUpdate()
+      // this.$forceUpdate() forsira re render na trenutnoj stranici
+      this.finished = true // osigurava renderiranje tablice nakon postavljanja podataka
     })
   }
 }

@@ -1,6 +1,5 @@
 <template>
 <div>
-  {{$route.params.id}}
   <template v-if="loaded">
     <graph :g-data.sync="gdata" type="line" />
   </template>

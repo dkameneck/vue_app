@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Graphs from '../components/Graphs'
 import Currencies from '../components/Currencies'
 import Currency from '../components/Currency'
+import Vuex from '../components/Vuex'
 
 Vue.use(Router)
 
@@ -25,6 +26,10 @@ export default new Router({
     {
       path: '/currency/:id',
       component: Currency
+    },
+    {
+      path: '/vuex',
+      component: Vuex
     }
   ],
   mode: 'history'
