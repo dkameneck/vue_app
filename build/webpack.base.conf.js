@@ -74,15 +74,6 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader'
-          {loader: 'css-loader', options: {importLoaders: 1}},
-          'postcss-loader'
-        ],
-        // include: __dirname + '/src'
       }
     ]
   },
